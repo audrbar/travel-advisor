@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CssBaseline, Grid } from '@material-ui/core';
+import { CssBaseline, Grid } from '@mui/material';
 
 import { getPlacesData, getWeatherData } from './api/travelAdvisorAPI';
 import Header from './components/Header/Header';

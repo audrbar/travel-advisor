@@ -1,14 +1,11 @@
 import React from 'react';
-import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip } from '@material-ui/core';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import PhoneIcon from '@material-ui/icons/Phone';
-import Rating from '@material-ui/lab/Rating';
-
-import useStyles from './styles.js';
+import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip } from '@mui/material';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneIcon from '@mui/icons-material/Phone';
+import Rating from '@mui/material/Rating';
 
 const PlaceDetails = ({ place, selected, refProp }) => {
   if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  const classes = useStyles();
 
   return (
     <Card elevation={6}>
@@ -36,21 +33,21 @@ const PlaceDetails = ({ place, selected, refProp }) => {
           </Typography>
         </Box>
         {place?.awards?.map((award) => (
-          <Box display="flex" justifyContent="space-between" my={1} alignItems="center">
-            <img src={award.images.small} />
+          <Box key={award.display_name} display="flex" justifyContent="space-between" my={1} alignItems="center">
+            <img src={award.images.small} alt={award.display_name} />
             <Typography variant="subtitle2" color="textSecondary">{award.display_name}</Typography>
           </Box>
         ))}
         {place?.cuisine?.map(({ name }) => (
-          <Chip key={name} size="small" label={name} className={classes.chip} />
+          <Chip key={name} size="small" label={name} sx={{ margin: '5px 5px 5px 0' }} />
         ))}
         {place.address && (
-          <Typography gutterBottom variant="body2" color="textSecondary" className={classes.subtitle}>
+          <Typography gutterBottom variant="body2" color="textSecondary" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '10px' }}>
             <LocationOnIcon />{place.address}
           </Typography>
         )}
         {place.phone && (
-          <Typography variant="body2" color="textSecondary" className={classes.spacing}>
+          <Typography variant="body2" color="textSecondary" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <PhoneIcon /> {place.phone}
           </Typography>
         )}
