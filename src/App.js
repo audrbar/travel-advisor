@@ -22,16 +22,24 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-      setCoords({ lat: latitude, lng: longitude });
-    });
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        ({ coords: { latitude, longitude } }) => {
+          setCoords({ lat: latitude, lng: longitude });
+        },
+        (error) => {
+          console.log('Geolocation error:', error.message);
+          // Keep default coordinates (London) if geolocation fails
+        }
+      );
+    }
   }, []);
 
   useEffect(() => {
-    const filtered = places.filter((place) => Number(place.rating) > rating);
+    const filtered = places?.filter((place) => Number(place.rating) > rating);
 
     setFilteredPlaces(filtered);
-  }, [rating]);
+  }, [rating, places]);
 
   useEffect(() => {
     if (bounds) {
@@ -42,7 +50,7 @@ const App = () => {
 
       getPlacesData(type, bounds.sw, bounds.ne)
         .then((data) => {
-          setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
+          setPlaces(data?.filter((place) => place.name && place.num_reviews > 0) || []);
           setFilteredPlaces([]);
           setRating('');
           setIsLoading(false);
