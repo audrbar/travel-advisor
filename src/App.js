@@ -10,7 +10,7 @@ const App = () => {
   const [type, setType] = useState('restaurants');
   const [rating, setRating] = useState('');
 
-  const [coords, setCoords] = useState({});
+  const [coords, setCoords] = useState({ lat: 0, lng: 0 });
   const [bounds, setBounds] = useState(null);
 
   const [weatherData, setWeatherData] = useState([]);
