@@ -8,6 +8,7 @@ import mapStyles from './mapStyles';
 
 const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherData }) => {
   const matches = useMediaQuery('(min-width:600px)');
+  const [mapLoaded, setMapLoaded] = React.useState(false);
 
   // Don't render map until we have valid coordinates
   if (!coords.lat && !coords.lng) {
@@ -22,8 +23,13 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
         center={coords}
         defaultZoom={14}
         yesIWantToUseGoogleMapApiInternals
+        onGoogleApiLoaded={() => setMapLoaded(true)}
         margin={[50, 50, 50, 50]}
-        options={{ disableDefaultUI: true, zoomControl: true, styles: mapStyles }}
+        options={(maps) => ({
+          disableDefaultUI: true,
+          zoomControl: true,
+          styles: mapStyles
+        })}
         onChange={(e) => {
           setCoords({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
