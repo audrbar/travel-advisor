@@ -2,6 +2,22 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Environment Setup
+
+Before running the app, you need to set up your environment variables:
+
+1. Copy the `.env.example` file to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Add your Google Maps API key to the `.env` file:
+   ```
+   REACT_APP_GOOGLE_MAPS_API_KEY=your_actual_api_key_here
+   ```
+
+**Important:** Never commit the `.env` file to version control. It's already included in `.gitignore`.
+
 ## Available Scripts
 
 In the project directory, you can run:
