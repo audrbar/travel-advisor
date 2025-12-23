@@ -25,11 +25,11 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={() => setMapLoaded(true)}
         margin={[50, 50, 50, 50]}
-        options={(maps) => ({
+        options={{
           disableDefaultUI: true,
           zoomControl: true,
           styles: mapStyles
-        })}
+        }}
         onChange={(e) => {
           setCoords({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
