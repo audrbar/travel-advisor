@@ -9,6 +9,11 @@ import mapStyles from './mapStyles';
 const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherData }) => {
   const matches = useMediaQuery('(min-width:600px)');
 
+  // Don't render map until we have valid coordinates
+  if (!coords.lat && !coords.lng) {
+    return <Box sx={{ height: '85vh', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading map...</Box>;
+  }
+
   return (
     <Box sx={{ height: '85vh', width: '100%' }}>
       <GoogleMapReact
