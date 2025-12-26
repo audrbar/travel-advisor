@@ -19,17 +19,17 @@ const List = ({ places, type, setType, rating, setRating, childClicked, isLoadin
         </Box>
       ) : (
         <>
-          <FormControl sx={{ margin: 1, minWidth: 120, marginBottom: '30px' }}>
-            <InputLabel id="type">Type</InputLabel>
-            <Select id="type" value={type} onChange={(e) => setType(e.target.value)}>
+          <FormControl sx={{ margin: 1, minWidth: 120, marginBottom: '30px' }} size="small">
+            <InputLabel id="type-label">Type</InputLabel>
+            <Select labelId="type-label" id="type" value={type} label="Type" onChange={(e) => setType(e.target.value)}>
               <MenuItem value="restaurants">Restaurants</MenuItem>
               <MenuItem value="hotels">Hotels</MenuItem>
               <MenuItem value="attractions">Attractions</MenuItem>
             </Select>
           </FormControl>
-          <FormControl sx={{ margin: 1, minWidth: 120, marginBottom: '30px' }}>
-            <InputLabel id="rating">Rating</InputLabel>
-            <Select id="rating" value={rating} onChange={(e) => setRating(e.target.value)}>
+          <FormControl sx={{ margin: 1, minWidth: 120, marginBottom: '30px' }} size="small">
+            <InputLabel id="rating-label">Rating</InputLabel>
+            <Select labelId="rating-label" id="rating" value={rating} label="Rating" onChange={(e) => setRating(e.target.value)}>
               <MenuItem value="">All</MenuItem>
               <MenuItem value="3">Above 3.0</MenuItem>
               <MenuItem value="4">Above 4.0</MenuItem>
