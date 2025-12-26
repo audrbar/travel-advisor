@@ -57,7 +57,7 @@ Before you begin, ensure you have the following installed:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/travel-advisor.git
+   git clone https://github.com/audrbar/travel-advisor.git
    cd travel-advisor
    ```
 
